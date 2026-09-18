@@ -7,22 +7,25 @@
     <title>ElectroReparación</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
-        tailwind.config={
-            theme:{
-                extend:{
-                    fontFamily:{
-                        display:['Oswald', 'sans-serif'],
-                        body:['Inter', 'sans-serif'],
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['Oswald', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
                     },
-                    colors:{
-                        ink:'#14181D',
-                        panel:'#1D242C',
-                        steel:'#4B5563',
-                        amber:{
-                            default:'#F0A202',
+                    colors: {
+                        ink: '#14181D',
+                        panel: '#1D242C',
+                        steel: '#4B5563',
+                        amber: {
+                            default: '#F0A202',
                             600: '#D68F00',
                             700: '#B87700',
                         },
@@ -33,87 +36,126 @@
         }
     </script>
 
-<style>
-    :root{
-        --ink: #14181D;
-        --panel: #1D242C;
-        --paper: #F0F1F3;
-        --amber: #F0A202;
-    }
-
-    @media (prefers-color-scheme: dark){
-        :root{
+    <style>
+        :root {
+            --ink: #14181D;
+            --panel: #1D242C;
             --paper: #F0F1F3;
-        }
-    }
-
-    html{
-        scroll-behavior: smooth;
-    }
-
-    body{
-        background-color: var(--paper);
-    }
-
-    .blueprint-grid{
-        background-color: var(--panel);
-        background-image: 
-            linear-gradient(rgba(240, 162, 2, 0.14) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(240, 162, 2, 0.14) 1px, transparent 1px)
-        ;
-
-        background-size: 28px 28px;
-    }
-
-    .step-line::before{
-        content: "";
-        position: absolute;
-        top: 1.75 rem;
-        left: -50%;
-        width: 100%;
-        height: 2px;
-        background: repeating-linear-gradient(90deg, #CBD3DA 0 8px, transparent 8px 14px);
-        z-index: 0;
-    }
-
-    @media(max-width: 767px){
-        .step-line::before{
-            display: none;
-        }
-    }
-
-    a:focus-visible,
-    button:focus-visible{
-        outline: 2px solid var(--amber);
-        outline-offset: 2px;
-    }
-
-    @media(prefers-reduced-motion: reduce){
-        html{
-            scroll-behavior: auto;
+            --amber: #F0A202;
         }
 
-        *{
-            transition-duration: 0.001ms !important;
-            animation-duration: 0.001ms !important;
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --paper: #F0F1F3;
+            }
         }
-    }
 
-</style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--paper);
+        }
+
+        .blueprint-grid {
+            background-color: var(--panel);
+            background-image:
+                linear-gradient(rgba(240, 162, 2, 0.14) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(240, 162, 2, 0.14) 1px, transparent 1px);
+
+            background-size: 28px 28px;
+        }
+
+        .step-line::before {
+            content: "";
+            position: absolute;
+            top: 1.75rem;
+            left: -50%;
+            width: 100%;
+            height: 2px;
+            background: repeating-linear-gradient(90deg, #CBD3DA 0 8px, transparent 8px 14px);
+            z-index: 0;
+        }
+
+        @media(max-width: 767px) {
+            .step-line::before {
+                display: none;
+            }
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--amber);
+            outline-offset: 2px;
+        }
+
+        @media(prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            * {
+                transition-duration: 0.001ms !important;
+                animation-duration: 0.001ms !important;
+            }
+        }
+    </style>
 
 </head>
 
-<body class="bg-slate-50 text-slate-800 font-sans">
-    <header class="sticky top-0 bg-slate-900 text-white shadow-lg z-50">
+<body class="text-ink font-body antialiased">
+
+    <!--Skip link para accesibilidad-->
+    <a href="#contenido"
+        class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] bg-amber text-ink px-4 py-2 rounded font-semibold">
+        Saltar al contenido
+    </a>
+
+
+    <header class="sticky top-0 bg-ink text-white shadow-lg z-50">
         <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
+            <a href="#inicio" class="flex items-center gap-2 shrink-0">
                 <i class="fa-solid fa-bolt text-amber-400 text-2xl"></i>
                 <span class="text-xl font-bold tracking-wide">Electro<span
                         class="text-amber-400">Reparación</span></span>
-            </div>
-            <nav class="hidden md:flex space-x-6 text-sm font-medium">
-                <a href="#servicios" class="hover:text-amber-400 transition">Servicios</a>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#servicios" class="hover:text-amber transition-colors">Servicios</a>
+                <a href="#proceso" class="hover:text-amber transition-colors">¿Cómo trabajamos?</a>
+                <a href="#garantia" class="hover:text-amber transition-colors">Garantía</a>
+                <a href="https://wa.me/593939073358" target="_blank" rel="noopener"
+                    class="bg-amber hover:bg-amber-600 text-ink font-semibold px-4 py-2 rounded-lg transition-colors">
+                    Escribir por WhatsApp
+                </a>
             </nav>
+
+            <button id="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu"
+                aria-label="Abrir menú de navegación" class="md:hidden p-2 -mr-2">
+                <svg id="icon-open" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round">
+                    <path d="M4 7h16M4 12h16M4 17h16" />
+                </svg>
+                <svg id="icon-close" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" class="hidden">
+                    <path d="M6 6l12 12M18 6 6 18" />
+                </svg>
+            </button>
+
+            <nav id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-ink">
+            <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-4 text-sm font-medium">
+                <a href="#servicios" class="py-1">Servicios</a>
+                <a href="#proceso" class="py-1">Cómo trabajamos</a>
+                <a href="#garantia" class="py-1">Garantía</a>
+                <a href="https://wa.me/593939073358" target="_blank" rel="noopener"
+                    class="bg-amber text-ink font-semibold px-4 py-2.5 rounded-lg text-center">
+                    Escribir por WhatsApp
+                </a>
+            </div>
+        </nav>
+
+
         </div>
     </header>
 
