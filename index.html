@@ -5,8 +5,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ElectroReparación</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config={
+            theme:{
+                extend:{
+                    fontFamily:{
+                        display:['Oswald', 'sans-serif'],
+                        body:['Inter', 'sans-serif'],
+                    },
+                    colors:{
+                        ink:'#14181D',
+                        panel:'#1D242C',
+                        steel:'#4B5563',
+                        amber:{
+                            default:'#F0A202',
+                            600: '#D68F00',
+                            700: '#B87700',
+                        },
+                        teal: '#0E7C74',
+                    },
+                }
+            }
+        }
+    </script>
+
+<style>
+    :root{
+        --ink: #14181D;
+        --panel: #1D242C;
+        --paper: #F0F1F3;
+        --amber: #F0A202;
+    }
+
+    @media (prefers-color-scheme: dark){
+        :root{
+            --paper: #F0F1F3;
+        }
+    }
+
+    html{
+        scroll-behavior: smooth;
+    }
+
+    body{
+        background-color: var(--paper);
+    }
+
+    .blueprint-grid{
+        background-color: var(--panel);
+        background-image: 
+            linear-gradient(rgba(240, 162, 2, 0.14) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(240, 162, 2, 0.14) 1px, transparent 1px)
+        ;
+
+        background-size: 28px 28px;
+    }
+
+    .step-line::before{
+        content: "";
+        position: absolute;
+        top: 1.75 rem;
+        left: -50%;
+        width: 100%;
+        height: 2px;
+        background: repeating-linear-gradient(90deg, #CBD3DA 0 8px, transparent 8px 14px);
+        z-index: 0;
+    }
+
+    @media(max-width: 767px){
+        .step-line::before{
+            display: none;
+        }
+    }
+
+    a:focus-visible,
+    button:focus-visible{
+        outline: 2px solid var(--amber);
+        outline-offset: 2px;
+    }
+
+    @media(prefers-reduced-motion: reduce){
+        html{
+            scroll-behavior: auto;
+        }
+
+        *{
+            transition-duration: 0.001ms !important;
+            animation-duration: 0.001ms !important;
+        }
+    }
+
+</style>
+
 </head>
 
 <body class="bg-slate-50 text-slate-800 font-sans">
@@ -14,7 +108,8 @@
         <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <i class="fa-solid fa-bolt text-amber-400 text-2xl"></i>
-                <span class="text-xl font-bold tracking-wide">Electro<span class="text-amber-400">Reparación</span></span>
+                <span class="text-xl font-bold tracking-wide">Electro<span
+                        class="text-amber-400">Reparación</span></span>
             </div>
             <nav class="hidden md:flex space-x-6 text-sm font-medium">
                 <a href="#servicios" class="hover:text-amber-400 transition">Servicios</a>
@@ -124,7 +219,8 @@
         class="fixed bottom-6 right-6 bg-emerald-500 hover:bg-emerald-600 text-white p-4 rounded-full shadow-2xl z-50 flex items-center justify-center transition-transform transform hover:scale-110">
         <i class="fa-brands fa-whatsapp text-3xl"></i>
     </a>
-    <footer class="flex bg-slate-900 text-slate-50 justify-center">© 2026 FabyTech. Todos los derechos reservados.</footer>
+    <footer class="flex bg-slate-900 text-slate-50 justify-center">© 2026 FabyTech. Todos los derechos reservados.
+    </footer>
 </body>
 
 </html>
